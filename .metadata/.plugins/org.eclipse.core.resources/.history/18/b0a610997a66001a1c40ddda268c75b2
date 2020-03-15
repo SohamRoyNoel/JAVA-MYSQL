@@ -1,0 +1,27 @@
+package Test.Json;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    }
+    
+    public static ResultSet RetrieveData() throws Exception {
+        //Registering the Driver
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+        //Getting the connection
+        String mysqlUrl = "jdbc:mysql://localhost/sample_database";
+        Connection con = DriverManager.getConnection(mysqlUrl, "root", "password");
+        System.out.println("Connection established......");
+        //Creating the Statement
+        Statement stmt = con.createStatement();
+        //Retrieving the records
+        ResultSet rs = stmt.executeQuery("Select * from MyPlayers");
+        return rs;
+     }
+}
